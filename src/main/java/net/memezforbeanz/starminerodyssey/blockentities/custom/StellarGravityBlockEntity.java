@@ -35,15 +35,14 @@ import software.bernie.geckolib.util.RenderUtils;
 
 public class StellarGravityBlockEntity extends AbstractFieldGeneratorBlockEntity implements GeoBlockEntity {
     private static final String RADIUS_KEY = "Radius";
-    private int radius = 10;
+    public int radius = 10;
     private static final float DEFAULT_GRAVITY = 1.0f;
     private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+    final int FOUND_MULTIPLIER = 2;
 
     public StellarGravityBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.STELLARGRAVITY.get(), pos, state);
     }
-
-
 
     @Override
     public double getTick(Object itemStack) {
@@ -68,18 +67,19 @@ public class StellarGravityBlockEntity extends AbstractFieldGeneratorBlockEntity
         );
 
         if (world.getRandom().nextInt(20) == 0) {
-            int found = this.searchAmethyst();
+            int found = this.searchAmethyst() * FOUND_MULTIPLIER;
             int target = computeTargetRadius(found);
+            StarminerAdditions.LOGGER.info("Target: " + target + "Found: " + found);
 
             // Gradually adjust radius toward target (by one unit per tick)
             if (this.radius < target) {
                 this.radius++;
-                StarminerAdditions.LOGGER.info("Found target radius " + this.radius);
+                StarminerAdditions.LOGGER.info("Increased target radius " + this.radius);
 
             } else if (this.radius > target) {
-                StarminerAdditions.LOGGER.info("Found target radius " + this.radius);
-
                 this.radius--;
+                StarminerAdditions.LOGGER.info("Decreased target radius " + this.radius);
+
             }
 
             if (world instanceof ServerLevel sw) {
@@ -113,7 +113,7 @@ public class StellarGravityBlockEntity extends AbstractFieldGeneratorBlockEntity
      */
     private int computeTargetRadius(int found) {
         int candidate = this.radius; // start at current radius
-        int maxCandidate = 100;       // maximum allowed value (adjust as needed)
+        int maxCandidate = 10000;       // maximum allowed value (adjust as needed)
 
         // Increase candidate as long as the next candidate's requirement is met.
         while (candidate < maxCandidate && calculateRequiredAmethystForCandidate(candidate + 1) <= found) {
@@ -125,9 +125,6 @@ public class StellarGravityBlockEntity extends AbstractFieldGeneratorBlockEntity
         }
         return candidate;
     }
-
-
-
 
     public AABB getGravityEffectBox() {
         BlockPos blockPos = this.getBlockPos();
@@ -159,6 +156,7 @@ public class StellarGravityBlockEntity extends AbstractFieldGeneratorBlockEntity
         buf.writeInt(this.polarity);
         buf.writeInt(this.visibility);
     }
+
 
     public void updateSettings(int radius, int polarity, int visibility) {
         int oldRadius = this.radius;
