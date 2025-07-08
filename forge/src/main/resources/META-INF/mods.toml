@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+#issueTrackerURL = ""
+license = "Mozilla Public License 2.0"
+
+[[mods]]
+modId = "starmineradditions"
+version = "${version}"
+displayName = "starmineradditions"
+authors = ""
+description = '''
+
+'''
+#logoFile = ""
+
+[[dependencies.starmineradditions]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.starmineradditions]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.starmineradditions]]
+modId = "architectury"
+mandatory = true
+versionRange = "[9.2.14,)"
+ordering = "AFTER"
+side = "BOTH"
