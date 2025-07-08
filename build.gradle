@@ -18,22 +18,38 @@ subprojects {
     apply plugin: 'architectury-plugin'
     apply plugin: 'maven-publish'
 
+    ext.modLoader = project.name
+
     base {
         // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
         archivesName = "$rootProject.archives_name-$project.name"
     }
 
     repositories {
-        // Add repositories to retrieve artifacts from in here.
-        // You should only use this when depending on other mods because
-        // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-        // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-        // for more information about repositories.
+        maven {
+            url = "https://api.modrinth.com/maven"
+        }
+        maven { url 'https://maven.ladysnake.org/releases' }
+        maven { url "https://maven.teamresourceful.com/repository/maven-public/" }
+        maven { url "https://maven.shedaniel.me/" }
+        maven { url "https://maven.terraformersmc.com/releases/" }
+        maven { url 'https://jitpack.io' }
+        maven {
+            name = "AzureDoom Mods"
+            url = "https://maven.azuredoom.com/mods"
+        }
+        maven {
+            url "https://cursemaven.com"
+            content {
+                includeGroup "curse.maven"
+            }
+        }
     }
 
     dependencies {
         minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
         mappings loom.officialMojangMappings()
+        modApi group: "earth.terrarium.botarium", name: "botarium-$modLoader-$project.minecraft_version", version: project.botarium_version
     }
 
     java {
