@@ -207,7 +207,7 @@ public class StellarCoreItem extends Item implements BotariumEnergyItem<WrappedI
 
         // Check if the item has energy to transfer
         if (itemContainer.getStoredEnergy() <= 0) {
-            player.displayClientMessage(Component.translatable("info.starminer-additions.star_core.no_energy"), true);
+            player.displayClientMessage(Component.translatable("info.starmineradditions.star_core.no_energy"), true);
             return InteractionResult.FAIL;
         }
 
@@ -218,7 +218,7 @@ public class StellarCoreItem extends Item implements BotariumEnergyItem<WrappedI
         EnergyContainer targetContainer = EnergyContainer.of(blockEntity, side);
         // Check if the block has an energy container and can accept energy
         if (targetContainer == null || !targetContainer.allowsInsertion()) {
-            player.displayClientMessage(Component.translatable("info.starminer-additions.star_core.no_target"), true);
+            player.displayClientMessage(Component.translatable("info.starmineradditions.star_core.no_target"), true);
             return InteractionResult.FAIL;
         }
 

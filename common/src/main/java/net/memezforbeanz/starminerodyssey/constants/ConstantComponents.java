@@ -20,15 +20,15 @@ public class ConstantComponents {
     }
 
     static {
-        ACTIVE = Component.translatable("tooltip.starminer-additions.active");
-        INACTIVE = Component.translatable("tooltip.starminer-additions.inactive");
-        SEQUENTIAL = Component.translatable("tooltip.starminer-additions.distribution_mode.sequential");
-        ROUND_ROBIN = Component.translatable("tooltip.starminer-additions.distribution_mode.round_robin");
-        STELLAR_GRAVITY_INFO = Component.translatable("info.starminer-additions.stellar_gravity").withStyle(ChatFormatting.GRAY);
-        STELLAR_CORE_INFO = Component.translatable("info.starminer-additions.star_core.info").withStyle(ChatFormatting.GRAY);
-        SHIFT_DESCRIPTION = Component.translatable("tooltip.starminer-additions.shift_description").withStyle(ChatFormatting.GRAY);
-        CAPACITOR_ENABLED = Component.translatable("tooltip.starminer-additions.enabled");
-        CAPACITOR_DISABLED = Component.translatable("tooltip.starminer-additions.disabled");
+        ACTIVE = Component.translatable("tooltip.starmineradditions.active");
+        INACTIVE = Component.translatable("tooltip.starmineradditions.inactive");
+        SEQUENTIAL = Component.translatable("tooltip.starmineradditions.distribution_mode.sequential");
+        ROUND_ROBIN = Component.translatable("tooltip.starmineradditions.distribution_mode.round_robin");
+        STELLAR_GRAVITY_INFO = Component.translatable("info.starmineradditions.stellar_gravity").withStyle(ChatFormatting.GRAY);
+        STELLAR_CORE_INFO = Component.translatable("info.starmineradditions.star_core.info").withStyle(ChatFormatting.GRAY);
+        SHIFT_DESCRIPTION = Component.translatable("tooltip.starmineradditions.shift_description").withStyle(ChatFormatting.GRAY);
+        CAPACITOR_ENABLED = Component.translatable("tooltip.starmineradditions.enabled");
+        CAPACITOR_DISABLED = Component.translatable("tooltip.starmineradditions.disabled");
 
     }
 }

@@ -1,7 +1,7 @@
 package net.memezforbeanz.starminerodyssey.item.client;
 
-import mod.azure.azurelib.rewrite.render.item.AzItemRenderer;
-import mod.azure.azurelib.rewrite.render.item.AzItemRendererConfig;
+import mod.azure.azurelib.render.item.AzItemRenderer;
+import mod.azure.azurelib.render.item.AzItemRendererConfig;
 import net.memezforbeanz.starminerodyssey.StarminerAdditions;
 import net.minecraft.resources.ResourceLocation;
 

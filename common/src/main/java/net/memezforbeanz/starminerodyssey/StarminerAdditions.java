@@ -1,8 +1,7 @@
 package net.memezforbeanz.starminerodyssey;
 
-import mod.azure.azurelib.rewrite.render.item.AzItemRendererRegistry;
+import mod.azure.azurelib.render.item.AzItemRendererRegistry;
 import net.memezforbeanz.starminerodyssey.item.client.StellarCoreRenderer;
-import net.memezforbeanz.starminerodyssey.item.custom.StellarCoreItem;
 import net.memezforbeanz.starminerodyssey.registry.*;
 import org.slf4j.Logger;
 
@@ -10,20 +9,35 @@ import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
 public class StarminerAdditions {
-	public static final String MOD_ID = "starminer-additions";
+	public static final String MOD_ID = "starmineradditions";
 	public static final Logger LOGGER = LogUtils.getLogger();
 
 	public StarminerAdditions() {
 	}
 
 	public static void init() {
-		AzItemRendererRegistry.register(StellarCoreRenderer::new, ModItems.STELLAR_CORE.get());
+		// Initialize registries only (no .get() calls here)
+		LOGGER.info("Initializing Starminer Additions...");
 		ModFluidProperties.FLUID_PROPERTIES.initialize();
+		LOGGER.info("Initialized fluid properties");
 		ModFluids.FLUIDS.init();
+		LOGGER.info("Initialized fluids");
 		ModBlocks.BLOCKS.init();
+		LOGGER.info("Initialized blocks");
 		ModItems.ITEMS.init();
+		LOGGER.info("Initialized items");
 		Tabs.TABS.init();
+		LOGGER.info("Initialized creative tabs");
 		ModBlockEntityTypes.BLOCK_ENTITY_TYPES.init();
+		LOGGER.info("Initialized block entity types");
+		LOGGER.info("Starminer Additions initialization complete!");
 	}
+    public static void initClient() {
+        // Register client-side stuff here
+        LOGGER.info("Initializing Starminer Additions client...");
+        AzItemRendererRegistry.register(StellarCoreRenderer::new, ModItems.STELLAR_CORE.get());
+        LOGGER.info("Registered STELLAR_CORE item renderer");
+        LOGGER.info("Starminer Additions client initialization complete!");
+    }
 
 }

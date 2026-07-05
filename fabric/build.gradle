@@ -36,32 +36,48 @@ dependencies {
 
     include modApi("teamreborn:energy:$energy_version")
 
-    // Adding and remapping a mod only in local runtime
+    // Valkyrien Skies 2 (gravity-on-ships). Version pinned to match gravity-api.
+    modImplementation("org.valkyrienskies:valkyrienskies-120-fabric:$vs2_version")
 
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}"
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal_components_version}"
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-world:${project.cardinal_components_version}"
-    modLocalRuntime "maven.modrinth:modmenu:7.0.1"
+    modLocalRuntime "maven.modrinth:modmenu:$modmenu_version"
     modApi("me.shedaniel.cloth:cloth-config-fabric:$clothconfig_version") {
         exclude(group: "net.fabricmc.fabric-api")
     }
     modImplementation("com.github.qouteall:GravityChanger:v1.0.2-mc1.20.1")
     implementation("com.eliotlash.mclib:mclib:20")
-    modImplementation group: "earth.terrarium.adastra", name: "ad_astra-fabric-$minecraft_version", version: "$adastra_version"
     modImplementation "mod.azure.azurelib:azurelib-$modLoader-$minecraft_version:$azurelib_version"
 }
 
 processResources {
+    Map<String, Object> properties = [
+            "version": version,
+            "fabric_loader_version": fabric_loader_version,
+            "fabric_api_version": fabric_api_version,
+            "minecraft_version": minecraft_version
+    ]
     inputs.property 'version', project.version
 
     filesMatching('fabric.mod.json') {
         expand version: project.version
+    }
+
+    // Include common resources like mixins.json
+    from(project(':common').file('src/main/resources')) {
+        include 'starmineradditions.mixins.json'
     }
 }
 
 shadowJar {
     configurations = [project.configurations.shadowBundle]
     archiveClassifier = 'dev-shadow'
+
+    // Include fabric module's own resources
+    from(sourceSets.main.output) {
+        include '*.json'
+    }
 }
 
 remapJar {

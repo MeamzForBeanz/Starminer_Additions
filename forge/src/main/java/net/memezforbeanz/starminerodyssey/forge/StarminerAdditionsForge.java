@@ -8,10 +8,15 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(StarminerAdditions.MOD_ID)
 public final class StarminerAdditionsForge {
     public StarminerAdditionsForge() {
-        // Submit our event bus to let Architectury API register our content on the right time.
-        EventBuses.registerModEventBus(StarminerAdditions.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
+        var modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        // Run our common setup.
+        // Submit our event bus to let Architectury API register our content on the right time.
+        EventBuses.registerModEventBus(StarminerAdditions.MOD_ID, modEventBus);
+
+        // Initialize registries in the constructor before Architectury processes them
+        // This triggers static initialization of all registry classes
         StarminerAdditions.init();
+
+        // Client setup is handled by ForgeClientEvents with @Mod.EventBusSubscriber
     }
 }

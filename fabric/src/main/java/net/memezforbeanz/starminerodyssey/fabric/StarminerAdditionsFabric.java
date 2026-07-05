@@ -11,6 +11,5 @@ public final class StarminerAdditionsFabric implements ModInitializer {
         // Proceed with mild caution.
 
         // Run our common setup.
-        StarminerAdditions.init();
     }
 }

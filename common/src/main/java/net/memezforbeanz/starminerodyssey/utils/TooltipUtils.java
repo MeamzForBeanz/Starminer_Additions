@@ -32,27 +32,27 @@ public class TooltipUtils {
     }
 
     public static Component getEnergyComponent(long energy, long capacity) {
-        return Component.translatable("info.starminer-additions.star_core.energy", new Object[]{getFormattedAmount(energy), getFormattedAmount(capacity)}).withStyle(ChatFormatting.GOLD);
+        return Component.translatable("info.starmineradditions.star_core.energy", new Object[]{getFormattedAmount(energy), getFormattedAmount(capacity)}).withStyle(ChatFormatting.GOLD);
     }
 
     public static Component getEnergyDifferenceComponent(long energy) {
-        return Component.translatable("info.starminer-additions.star_core.energy_%s".formatted(energy < 0L ? "out" : "in"), new Object[]{getFormattedAmount(Math.abs(energy))}).withStyle(ChatFormatting.GOLD);
+        return Component.translatable("info.starmineradditions.star_core.energy_%s".formatted(energy < 0L ? "out" : "in"), new Object[]{getFormattedAmount(Math.abs(energy))}).withStyle(ChatFormatting.GOLD);
     }
 
     public static Component getMaxEnergyInComponent(long maxIn) {
-        return Component.translatable("tooltip.starminer-additions.max_energy_in", new Object[]{getFormattedAmount(maxIn)}).withStyle(ChatFormatting.GREEN);
+        return Component.translatable("tooltip.starmineradditions.max_energy_in", new Object[]{getFormattedAmount(maxIn)}).withStyle(ChatFormatting.GREEN);
     }
 
     public static Component getMaxEnergyOutComponent(long maxOut) {
-        return Component.translatable("tooltip.starminer-additions.max_energy_out", new Object[]{getFormattedAmount(maxOut)}).withStyle(ChatFormatting.GREEN);
+        return Component.translatable("tooltip.starmineradditions.max_energy_out", new Object[]{getFormattedAmount(maxOut)}).withStyle(ChatFormatting.GREEN);
     }
 
     public static Component getEnergyUsePerTickComponent(long usePerTick) {
-        return Component.translatable("tooltip.starminer-additions.use_rate", new Object[]{getFormattedAmount(Math.abs(usePerTick))}).withStyle(ChatFormatting.AQUA);
+        return Component.translatable("tooltip.starmineradditions.use_rate", new Object[]{getFormattedAmount(Math.abs(usePerTick))}).withStyle(ChatFormatting.AQUA);
     }
 
     public static Component getEnergyGenerationPerTickComponent(long generationPerTick) {
-        return Component.translatable("tooltip.starminer-additions.production_rate", new Object[]{getFormattedAmount(Math.abs(generationPerTick))}).withStyle(ChatFormatting.AQUA);
+        return Component.translatable("tooltip.starmineradditions.production_rate", new Object[]{getFormattedAmount(Math.abs(generationPerTick))}).withStyle(ChatFormatting.AQUA);
     }
 
     public static Component getActiveInactiveComponent(boolean active) {

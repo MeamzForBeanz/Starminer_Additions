@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "starmineradditions",
   "version": "${version}",
-  "name": "starmineradditions",
+  "name": "Starminer Additions",
   "description": "",
   "authors": [
     ""
@@ -22,7 +22,7 @@
     ]
   },
   "mixins": [
-    "starminer-additions.mixins.json"
+    "starmineradditions.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.16.14",

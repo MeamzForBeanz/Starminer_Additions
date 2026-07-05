@@ -15,6 +15,6 @@ public final class ModFluidProperties {
     }
 
     static {
-        HELIUM = FLUID_PROPERTIES.register("star_helium", FluidProperties.create().still(new ResourceLocation("starminer-additions:block/star_helium_still")).flowing(new ResourceLocation("starminer-additions:block/star_helium_flow")).overlay(new ResourceLocation("starminer-additions:block/star_helium_still")).screenOverlay(new ResourceLocation("textures/misc/underwater.png")).viscosity(1000).density(999).tintColor(-2431248).canConvertToSource(false).lightLevel(10).canSwim(true).temperature(1000).tickRate(30).motionScale(0.014));
+        HELIUM = FLUID_PROPERTIES.register("star_helium", FluidProperties.create().still(new ResourceLocation("starmineradditions:block/star_helium_still")).flowing(new ResourceLocation("starmineradditions:block/star_helium_flow")).overlay(new ResourceLocation("starmineradditions:block/star_helium_still")).screenOverlay(new ResourceLocation("textures/misc/underwater.png")).viscosity(1000).density(999).tintColor(-2431248).canConvertToSource(false).lightLevel(10).canSwim(true).temperature(1000).tickRate(30).motionScale(0.014));
     }
 }

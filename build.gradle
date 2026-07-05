@@ -34,6 +34,7 @@ subprojects {
         maven { url "https://maven.shedaniel.me/" }
         maven { url "https://maven.terraformersmc.com/releases/" }
         maven { url 'https://jitpack.io' }
+        maven { url = "https://maven.valkyrienskies.org/" } // Valkyrien Skies 2 + VS core
         maven {
             name = "AzureDoom Mods"
             url = "https://maven.azuredoom.com/mods"
@@ -44,12 +45,22 @@ subprojects {
                 includeGroup "curse.maven"
             }
         }
+
+        maven { url = "https://mvn.devos.one/releases" } // Porting Lib releases
+        maven { url = "https://mvn.devos.one/snapshots" } // Create and several dependencies
+        maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
+        maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven" } // Forge Config API Port
+        maven { url = "https://maven.blamejared.com" } // JEI
+        maven { url = "https://maven.createmod.net/" } // JEI
+        maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven" } // JEI
+
     }
 
     dependencies {
         minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
         mappings loom.officialMojangMappings()
         modApi group: "earth.terrarium.botarium", name: "botarium-$modLoader-$project.minecraft_version", version: project.botarium_version
+
     }
 
     java {

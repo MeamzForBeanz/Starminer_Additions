@@ -1,6 +1,10 @@
 architectury {
     common enabled_platforms.split(',')
 }
+loom {
+    accessWidenerPath = file("src/main/resources/starmineradditions.accesswidener.json")
+}
+
 
 dependencies {
     // We depend on Fabric Loader here to use the Fabric @Environment annotations,
@@ -11,4 +15,9 @@ dependencies {
     modImplementation "dev.architectury:architectury:$project.architectury_api_version"
     modImplementation "com.teamresourceful.resourcefullib:resourcefullib-common-1.20.1:2.1.29"
     compileOnly "mod.azure.azurelib:azurelib-common-$project.minecraft_version:$project.azurelib_version"
+
+    // Valkyrien Skies core API (platform-agnostic) for shared gravity-on-ships logic.
+    // As of VS core 1.1.0+ea6dc8576e the former `api-game` module was folded into `api`,
+    // so there is a single artifact to depend on.
+    modCompileOnly("org.valkyrienskies.core:api:$vscore_version")
 }
